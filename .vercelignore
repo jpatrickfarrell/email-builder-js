@@ -1,0 +1,18 @@
+# Ignore unnecessary files for Vercel deployment
+node_modules
+.git
+.github
+*.log
+.DS_Store
+coverage
+.nyc_output
+.vscode
+.idea
+
+# Ignore other packages that aren't needed for the editor-sample
+packages/block-*
+packages/document-core
+packages/email-builder
+
+# Keep only the editor-sample package
+!packages/editor-sample
