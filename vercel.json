@@ -2,11 +2,5 @@
   "version": 2,
   "buildCommand": "cd packages/editor-sample && npm run build",
   "outputDirectory": "packages/editor-sample/dist",
-  "installCommand": "npm ci && cd packages/editor-sample && npm ci",
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/packages/editor-sample/dist/$1"
-    }
-  ]
+  "installCommand": "npm ci && cd packages/editor-sample && npm ci"
 }
