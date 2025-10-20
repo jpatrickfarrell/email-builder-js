@@ -1,3 +1,4 @@
+import React from 'react';
 import { create } from 'zustand';
 
 import getConfiguration from '../../getConfiguration';
@@ -17,7 +18,7 @@ type TValue = {
 };
 
 const editorStateStore = create<TValue>(() => ({
-  document: getConfiguration(window.location.hash),
+  document: getConfiguration(typeof window !== 'undefined' ? window.location.hash : ''),
   selectedBlockId: null,
   selectedSidebarTab: 'styles',
   selectedMainTab: 'editor',
@@ -106,4 +107,24 @@ export function toggleSamplesDrawerOpen() {
 
 export function setSelectedScreenSize(selectedScreenSize: TValue['selectedScreenSize']) {
   return editorStateStore.setState({ selectedScreenSize });
+}
+
+// Hook to handle hash changes after component mounts
+export function useHashChange() {
+  React.useEffect(() => {
+    const handleHashChange = () => {
+      const newDocument = getConfiguration(window.location.hash);
+      resetDocument(newDocument);
+    };
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    
+    // Also check hash on mount in case it changed
+    handleHashChange();
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
 }

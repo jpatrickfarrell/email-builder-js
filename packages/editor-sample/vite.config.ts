@@ -43,4 +43,7 @@ export default defineConfig({
   optimizeDeps: {
     include: ['@emotion/react', '@emotion/styled'],
   },
+  define: {
+    global: 'globalThis',
+  },
 });

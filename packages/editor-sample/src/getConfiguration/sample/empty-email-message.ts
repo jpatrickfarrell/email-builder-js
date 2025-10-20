@@ -8,7 +8,24 @@ const EMPTY_EMAIL_MESSAGE: TEditorConfiguration = {
       canvasColor: '#FFFFFF',
       textColor: '#262626',
       fontFamily: 'MODERN_SANS',
-      childrenIds: [],
+      childrenIds: ['welcome-text-block'],
+    },
+  },
+  'welcome-text-block': {
+    type: 'Text',
+    data: {
+      style: {
+        fontWeight: 'normal',
+        padding: {
+          top: 24,
+          bottom: 24,
+          right: 24,
+          left: 24,
+        },
+      },
+      props: {
+        text: 'Welcome to EmailBuilder.js! Click on a sample template from the left sidebar to get started, or add blocks to create your own email template.',
+      },
     },
   },
 };
